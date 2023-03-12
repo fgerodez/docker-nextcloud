@@ -1,0 +1,6 @@
+FROM mariadb:10.6
+
+RUN cat > /etc/mysql/mariadb.conf.d/99-custom.cnf <<-EOF 
+	[mysqld]
+	innodb_buffer_size = 128M
+EOF
