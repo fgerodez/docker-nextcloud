@@ -10,14 +10,19 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    
     strategy:
       fail-fast: false
       matrix:
         include:
           - dockerfile: ./Dockerfile-nextcloud
             image: mahoneko/nextcloud:latest
+            
           - dockerfile: ./Dockerfile-mariadb
             image: mahoneko/mariadb:latest
+            
+          - dockerfile: ./Dockerfile-caddy
+            image: mahoneko/caddy:latest
             
     steps:
       - name: Set up QEMU
