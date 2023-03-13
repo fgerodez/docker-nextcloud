@@ -2,17 +2,16 @@ FROM caddy:latest
 
 RUN cat > /etc/caddy/Caddyfile <<-'EOF'
 	{
-      debug
 	  http_port 8080
 	  https_port 8443
 	  admin off
 	}
 
 	{$CLOUD_HOSTNAME} {
-      root * ${$CLOUD_ROOT}
+      root * {$CLOUD_ROOT}
 
   	  php_fastcgi {$CLOUD_FPM} {
-        root ${CLOUD_FCGI_ROOT}
+        root {$CLOUD_FCGI_ROOT}
 	  }
 
  	  file_server
