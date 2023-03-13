@@ -9,7 +9,9 @@ RUN cat > /etc/caddy/Caddyfile <<-'EOF'
 
 	{$CLOUD_HOSTNAME} {
       root * ${$CLOUD_ROOT}
-	  php_fastcgi {$CLOUD_FPM}
+	  php_fastcgi {$CLOUD_FPM} {
+        root ${CLOUD_FCGI_ROOT}
+	  }
 	  file_server
 
 	  header {
